@@ -5,27 +5,28 @@ class MyHomePage extends StatelessWidget {
   final String name = 'Dinda Dinanti'; // Nama
   final String className = 'PBP C'; // Kelas
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Daftar Produk", Icons.mood),
-    ItemHomepage("Tambah Produk", Icons.add),
-    ItemHomepage("Logout", Icons.logout),
+    ItemHomepage("Lihat Daftar Produk", Icons.local_florist, Colors.orangeAccent.shade100),
+    ItemHomepage("Tambah Produk", Icons.add_business, Colors.red.shade900),
+    ItemHomepage("Logout", Icons.logout, Colors.lime.shade900),
   ];
 
-  MyHomePage({super.key}); // Removed 'const' keyword from here
+  MyHomePage({super.key}); 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Mental Health Tracker',
+          'Sunrise Mart',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: const Color(0xFFFFECB3),
       ),
-      body: Padding(
+      body: Container(
+        color: const Color(0xFFFFF8E1), // Background color modified 
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,6 +83,7 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: const Color(0xFFFFF2E0), // Ubah warna latar belakang 
       elevation: 2.0,
       child: Container(
         width: MediaQuery.of(context).size.width / 3.5,
@@ -101,11 +103,13 @@ class InfoCard extends StatelessWidget {
   }
 }
 
+
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color;
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, this.color);
 }
 
 class ItemCard extends StatelessWidget {
@@ -116,7 +120,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.color, // Ganti dengan warna dari item
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
