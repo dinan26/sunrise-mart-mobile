@@ -135,5 +135,58 @@
           
           const List<String> fruits = ['Apple', 'Banana']; // List konstan
 
-              
-        
+ **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas**
+
+  ### 1. Membuat Proyek Baru
+  - Buat proyek baru bernama **sunrise_mart** dengan perintah:
+    ```
+    flutter create sunrise_mart
+  - Masuk ke direktori proyek dengan:
+     ```
+     cd sunrise_mart
+  - Jalankan proyek pertama kali dengan:
+     ```
+    flutter run
+  - Jalankan proyek tersebut di aplikasi Google Chrome dengan perintah:
+    ```
+    flutter run -d chrome
+
+  ## 2. Menambahkan File `menu.dart`
+  - Buat file baru yang bernama **menu.dart** di dalam folder **lib**.
+  - Pindahkan kode untuk halaman utama (**MyHomePage**) dari **main.dart** ke dalam **menu.dart**.
+  - Tambahkan import berikut di bagian atas **main.dart**:
+    ```
+    import 'package:sunrise_mart/menu.dart';
+
+  ## 3. Membuat Tombol “Lihat Daftar Produk", "Tambah Produk", dan "Logout” dengan Ikon dan Teks
+
+  - Tombol "Lihat Daftar Produk", "Tambah Produk", dan "Logout" dibuat sebagai bagian dari halaman utama aplikasi (MyHomePage).
+  - Masing-masing tombol disusun dalam bentuk kartu (card) pada GridView agar terlihat rapi dalam tata letak grid.
+  - Untuk mendefinisikan tombol-tombol ini, saya menggunakan kelas ItemHomepage, yang menyimpan data nama tombol, ikon, dan warna.
+
+  ## 4. Mengimplementasikan Warna-Warna yang Berbeda untuk Setiap Tombol
+
+- Pada daftar **items** di dalam **MyHomePage**, setiap item memiliki warna yang berbeda untuk membedakan tombol. Berikut kodenya:
+    ```
+    final List<ItemHomepage> items = [
+      ItemHomepage("Lihat Daftar Produk", Icons.local_florist, Colors.orangeAccent.shade100),
+      ItemHomepage("Tambah Produk", Icons.add_business, Colors.red.shade900),
+      ItemHomepage("Logout", Icons.logout, Colors.lime.shade900),
+    ];
+- Warna dari masing-masing tombol ini diambil dari item.color dan diterapkan pada latar belakang tombol di dalam ItemCard.
+
+  ## 5. Memunculkan Snackbar dengan Pesan Tertentu Saat Tombol Ditekan
+
+- Setiap tombol di dalam **ItemCard** memiliki metode **onTap** yang memicu **SnackBar** untuk menampilkan pesan.
+- Pesan pada **SnackBar** disesuaikan dengan tombol yang ditekan. Misalnya, saat tombol **"Lihat Daftar Produk"** ditekan, pesan yang muncul adalah:
+  ```
+  onTap: () {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+      );
+  },
+  
+</details>
+
