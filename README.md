@@ -190,3 +190,119 @@
   
 </details>
 
+<details>
+  <summary>TUGAS 8</summary>
+   
+  **TUGAS INDIVIDU 8**
+
+## 1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+   
+  `const` adalah keyword yang digunakan untuk mendefinisikan objek yang **immutable (tidak dapat diubah)** dan dihitung pada **waktu kompilasi**. Objek yang diberi tanda `const` hanya akan dibuat sekali dan tidak akan berubah selama waktu eksekusi aplikasi. Ini memberikan keuntungan dalam hal optimasi performa dan penggunaan memori.
+
+## Keuntungan Menggunakan `const` di Flutter
+
+### 1. **Optimasi Performa**
+   - Menggunakan `const` memungkinkan Flutter untuk **menghindari pembuatan ulang widget** yang sudah ada, sehingga meningkatkan kecepatan aplikasi.
+   - Objek yang diberi `const` hanya dibuat satu kali, dan Flutter akan menggunakan instance yang sama setiap kali objek tersebut dibutuhkan.
+
+### 2. **Penghematan Memori**
+   - Objek yang dibuat dengan `const` hanya akan ada **satu instance** yang digunakan berulang kali. Ini mengurangi **penggunaan memori** karena Flutter tidak perlu membuat objek baru setiap kali widget dirender.
+
+### 3. **Stabilitas Kode**
+   - Kode yang menggunakan `const` lebih **terprediksi** dan lebih sedikit **bug** karena objek yang didefinisikan dengan `const` tidak berubah selama runtime aplikasi.
+
+## Kapan Menggunakan `const`?
+1. **Widget yang Tidak Berubah**
+   
+   Gunakan `const` untuk widget yang tidak akan berubah selama runtime, seperti `Text`, `Icon`, atau widget dengan nilai yang tetap.
+      ```dart
+      const Text('Hello World');
+   
+2. **Nilai Konstanta**
+
+    Gunakan `const` untuk nilai yang tetap dan tidak berubah, seperti warna, ukuran, atau teks yang bersifat tetap.
+    ```dart
+    const Color backgroundColor = Color(0xFFFFF8E1);
+
+
+3. **Widget Tree yang Stabil**
+   
+   Gunakan const dalam widget tree yang besar namun tidak memiliki perubahan nilai, untuk meningkatkan performa rendering.
+      ```dart
+      return const Scaffold(
+        appBar: AppBar(
+          title: Text('My App'),
+        ),
+      );
+
+## Kapan Tidak Menggunakan `const`?
+1. **Nilai atau State yang Berubah**
+Jangan gunakan const pada widget yang bergantung pada nilai yang dapat berubah saat runtime, seperti input pengguna, data yang diambil dari API, atau nilai yang sering berubah.
+
+2. **Pada StatefulWidget**
+   Hindari penggunaan const pada widget yang menggunakan StatefulWidget, karena widget tersebut bergantung pada state yang bisa berubah sesuai dengan interaksi pengguna.
+      ```dart
+          class MyCounter extends StatefulWidget {
+            @override
+            _MyCounterState createState() => _MyCounterState();
+          }
+
+## 2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+### 1. **`Column`**
+   - **Arah Layout**: Vertikal (atas ke bawah).
+   - **Penggunaan**: Digunakan untuk menata widget secara vertikal.
+   - **Keuntungan**: Cocok untuk menyusun widget seperti form, daftar, atau elemen-elemen yang saling bertumpuk secara vertikal.
+   - **Kekurangan**: Memiliki batasan tinggi (overflow) jika ukuran widget lebih besar dari ruang yang tersedia.
+
+### 2. **`Row`**
+   - **Arah Layout**: Horizontal (kiri ke kanan).
+   - **Penggunaan**: Digunakan untuk menata widget secara horizontal.
+   - **Keuntungan**: Cocok untuk menata elemen seperti tombol atau gambar yang saling berdampingan secara horizontal.
+   - **Kekurangan**: Memiliki batasan lebar (overflow) jika ukuran widget lebih besar dari ruang yang tersedia.
+
+
+## Kapan Menggunakan `Column` dan `Row`?
+- **Gunakan `Column`** ketika ingin widget tampil secara vertikal, seperti pada form input atau daftar elemen.
+- **Gunakan `Row`** ketika ingin widget tampil secara horizontal, seperti tombol yang diletakkan berdampingan atau gambar yang saling bersebelahan.
+
+## 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Saya menggunakan beberapa elemen input Flutter untuk mengumpulkan informasi produk, yaitu:
+
+- TextFormField untuk Nama: Untuk memasukkan nama produk.
+- TextFormField untuk Harga: Untuk memasukkan harga produk dalam format angka.
+- TextFormField untuk Deskripsi: Untuk memasukkan deskripsi produk.
+- TextFormField untuk Stock: Untuk memasukkan informasi tentang stockproduk.
+
+Selain itu, ada beberapa elemen input Flutter lainnya yang tidak digunakan dalam formulir ini, yaitu:
+
+- DropdownButtonFormField: Untuk memilih nilai dari daftar dropdown.
+- CheckboxListTile: Untuk pilihan ya/tidak menggunakan kotak centang.
+- RadioListTile: Untuk memilih satu opsi dari beberapa pilihan.
+- SwitchListTile: Untuk memilih antara dua status menggunakan toggle switch.
+- Slider: Untuk memilih nilai dalam rentang tertentu.
+- Date & Time Pickers: Untuk memilih tanggal dan waktu.
+
+## 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Untuk memastikan konsistensi tema dalam aplikasi Flutter, kita dapat mendefinisikan tema di dalam widget MaterialApp melalui properti theme. Tema yang ditentukan di sini akan diterapkan secara otomatis pada semua widget yang mendukung theming, sehingga menghasilkan tampilan yang seragam di seluruh aplikasi. Dengan menggunakan Theme.of(context), kita dapat mengakses berbagai properti tema yang telah ditetapkan, seperti warna, font, dan gaya lainnya, yang kemudian dapat digunakan pada berbagai widget sesuai kebutuhan.
+
+## 5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+- Navigasi Dasar dengan Navigator.push dan Navigator.pop
+Metode ini digunakan untuk navigasi sederhana, seperti berpindah ke halaman baru dan kembali ke halaman sebelumnya. Navigator.push menambahkan halaman baru ke dalam stack navigasi, sementara Navigator.pop mengeluarkan halaman paling atas dari stack, yang memungkinkan pengguna untuk kembali ke halaman sebelumnya.
+
+- Named Routes
+Dengan named routes, kita dapat menetapkan nama tertentu untuk setiap rute aplikasi. Ini memungkinkan kita untuk menggunakan nama rute saat melakukan navigasi antarhalaman, yang membuat navigasi lebih rapi dan terstruktur, terutama pada aplikasi dengan banyak halaman.
+
+- Mendefinisikan Routes di dalam MaterialApp
+Pada widget MaterialApp, kita bisa mendefinisikan semua rute aplikasi melalui properti routes. Dengan cara ini, setiap halaman memiliki nama yang unik, dan kita dapat menggunakan Navigator.pushNamed untuk menavigasi ke halaman tertentu. Pendekatan ini membantu menjaga navigasi aplikasi tetap terorganisir.
+
+- Nested Navigators
+Untuk aplikasi yang lebih kompleks, seperti aplikasi dengan beberapa level navigasi (misalnya, menggunakan tab atau drawer), kita dapat menggunakan nested navigators. Dengan navigasi bertingkat, setiap bagian aplikasi memiliki stack navigasinya sendiri, memungkinkan pengguna untuk berpindah antarhalaman dalam satu bagian tanpa mempengaruhi stack navigasi utama.
+
+
+
+
+
