@@ -302,6 +302,31 @@ Pada widget MaterialApp, kita bisa mendefinisikan semua rute aplikasi melalui pr
 - Nested Navigators
 Untuk aplikasi yang lebih kompleks, seperti aplikasi dengan beberapa level navigasi (misalnya, menggunakan tab atau drawer), kita dapat menggunakan nested navigators. Dengan navigasi bertingkat, setiap bagian aplikasi memiliki stack navigasinya sendiri, memungkinkan pengguna untuk berpindah antarhalaman dalam satu bagian tanpa mempengaruhi stack navigasi utama.
 
+## Berikut implementasi dalam pembuatan  Flutter Navigation, Layouts, Forms, and Input Elements
+
+**1. Menambahkan Drawer Menu Untuk Navigasi**
+  - Membuat direktori baru bernama widgets di subdirektori lib/.
+  - Kemudian, membuat berkas dengan nama left_drawer.dart
+  - Tambahkan impor untuk halaman-halaman yang ingin dimasukkan navigasinya ke dalam Drawer Menu
+  - Memasukkan routing untuk halaman-halaman yang diimpor Navigator.pop(context); // Menutup drawer Navigator.push( context, MaterialPageRoute( builder: (context) => const ProductEntryFormPage(), ), );
+  - Menghias drawer dengan memasukkan drawer header di TODO: Bagian drawer header
+  - Memasukka drawer ke halaman yang diinginkan // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold drawer: const LeftDrawer(),
+    
+**2. Menambahkan Form dan Elemen Input**
+  - Membuat berkas baru pada direktori lib dengan nama productentry_form.dart
+  - Menambahkan kerangka dasar untuk membuat halaman form entri
+  - Ubah widget Placeholder
+  - Membuat struktur dasar halaman form dengan material design ( Siap untuk menampung form fields yang bisa di-scroll, sudah memiliki styling dasar (warna primary untuk app bar dan teks putih), siap untuk ditambahkan drawer)
+  - Membuat variabel baru bernama _formKey dengan nilai GlobalKey(); lalu tambahkan _formKey tersebut ke dalam atribut key milik widget Form. Atribut key akan berfungsi sebagai handler dari form state, validasi form, dan penyimpanan form.
+  - Mengisi widget Form dengan field. Membuat beberapa variabel untuk menyimpan input dari masing-masing field yang akan dibuat.
+  - Membuat form field untuk masing masing field/variable (berisi validasi beserta UI/UX)
+  - Buatlah tombol sebagai child selanjutnya dari Column. Bungkus tombol ke dalam widget Padding dan Align. Tombol belum untuk menyimpan data ke database (hanya untuk memunculkan pop-up)
+    
+**3. Memunculkan Data**
+  - Menambahkan fungsi showDialog() pada bagian onPressed() dari potongan kode yang sebelumnya ditambahkan. Lalu memunculkan widget AlertDialog pada fungsi tersebut.
+    
+**4. Menambahkan Fitur Navigasi pada Tombol​**
+  - Buat agar kode yang terletak pada atribut onTap dari InkWell dapat melakukan navigasi ke route lain
 
 
 
