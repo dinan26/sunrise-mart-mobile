@@ -335,10 +335,6 @@ Untuk aplikasi yang lebih kompleks, seperti aplikasi dengan beberapa level navig
    
   **TUGAS INDIVIDU 9**
 
-  # README
-
-## Penjelasan dan Implementasi Fitur
-
 ### 1. Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
 Membuat model untuk pengambilan atau pengiriman data JSON sangat penting karena:
 - **Memberikan Struktur Data**: Model memetakan data JSON ke dalam objek aplikasi yang jelas.
